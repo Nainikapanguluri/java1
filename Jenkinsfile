@@ -26,7 +26,7 @@ dockerImage = ''
            
           steps{
           script {
-              docke.push(brightbox/terraform)
+              docker.push(brightbox/terraform)
               docker.push(brightbox/cli)
               withDockerRegistry([ credentialsId: "docker-hub", url: "" ])
              {
