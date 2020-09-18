@@ -27,7 +27,9 @@ dockerImage = ''
           steps{
           
               withDockerRegistry([ credentialsId: "docker-hub", url: "" ])
-             {  sh 'docker push nainikapanguluri/java_app2'
+             {  sh '''docker push brightbox/terraform:latest
+                 docker push brightbox/cli:latest
+                docker push nainikapanguluri/java_app2'''
                 
             }
     
