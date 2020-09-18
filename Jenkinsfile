@@ -13,13 +13,13 @@ dockerImage = ''
                 sh 'mvn install'
             }
             }
-       
+        
        stage ('dockerization') {
            
             steps{
-              
-                 sh 'docker build -t nainikapanguluri/java_app2 .'
-                
+              script {
+                 dockerImage = docker.build("nainikapanguluri/java_app1")
+              }
                  }
        }
        stage('Deploy Image') {
@@ -29,9 +29,10 @@ dockerImage = ''
               withDockerRegistry([ credentialsId: "docker-hub", url: "" ])
              {  sh '''docker push brightbox/terraform:latest
                  docker push brightbox/cli:latest
-                docker push nainikapanguluri/java_app2'''
-                
-            }
+                 dockerImage.push("${env.BUILD_NUMBER}")
+                 dockerImage.push("latest")'''
+             }   
+            
     
   }
 }    
