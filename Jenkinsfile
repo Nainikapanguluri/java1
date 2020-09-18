@@ -17,9 +17,8 @@ dockerImage = ''
        stage ('dockerization') {
            
             steps{
-              script {
-                 dockerImage = docker.build("nainikapanguluri/java_app1")
-              }
+              sh 'dockerImage = docker.build("nainikapanguluri/java_app1")'
+              
                  }
        }
        stage('Deploy Image') {
