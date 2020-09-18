@@ -17,8 +17,9 @@ dockerImage = ''
        stage ('dockerization') {
            
             steps{
-              sh 'dockerImage = docker.build("nainikapanguluri/java_app1")'
-              
+                script{
+                    dockerImage = docker.build("nainikapanguluri/java_app1")
+                }
                  }
        }
        stage('Deploy Image') {
@@ -27,9 +28,11 @@ dockerImage = ''
           
               withDockerRegistry([ credentialsId: "docker-hub", url: "" ])
              {  sh '''docker push brightbox/terraform:latest
-                 docker push brightbox/cli:latest
-                 dockerImage.push("${env.BUILD_NUMBER}")
-                 dockerImage.push("latest")'''
+                 docker push brightbox/cli:latest'''
+              script {
+                  dockerImage.push("${env.BUILD_NUMBER}")
+                 dockerImage.push("latest")
+              }
              }   
             
     
