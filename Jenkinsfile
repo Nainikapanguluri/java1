@@ -26,8 +26,8 @@ dockerImage = ''
            
           steps{
           script {
-              docke.push(brightbox/terraform:latest)
-              docker.push(brightbox/cli:latest)
+              docke.push(brightbox/terraform)
+              docker.push(brightbox/cli)
               withDockerRegistry([ credentialsId: "docker-hub", url: "" ])
              {
                  dockerImage.push("${env.BUILD_NUMBER}")
