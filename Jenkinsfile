@@ -1,8 +1,8 @@
 pipeline {
     
     environment {
-registry = "nainikapanguluri/java_app1"
-registryCredential = 'docker-hub'
+registry = "nainikachowdary/java_app1"
+registryCredential = 'docker123'
 dockerImage = ''
 }
     agent any
@@ -18,7 +18,7 @@ dockerImage = ''
            
             steps{
                 script{
-                    dockerImage = docker.build("nainikapanguluri/java_app1")
+                    dockerImage = docker.build("nainikachowdary/java_app1")
                 }
                  }
        }
@@ -26,7 +26,7 @@ dockerImage = ''
            
           steps{
           
-              withDockerRegistry([ credentialsId: "docker-hub", url: "" ])
+              withDockerRegistry([ credentialsId: "docker123", url: "" ])
              {  sh '''docker push brightbox/terraform:latest
                  docker push brightbox/cli:latest'''
               script {
