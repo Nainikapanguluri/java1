@@ -39,7 +39,7 @@ dockerImage = ''
               
               steps{
                   script{
-                  sh 'docker run -it -p 8081:8080 $registry:latest'
+                  sh 'docker run -t -p 8081:8080 $registry:latest'
                   }
               }
               }
