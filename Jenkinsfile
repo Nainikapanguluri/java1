@@ -26,7 +26,7 @@ dockerImage = ''
           steps{
           script {
               
-            withDockerRegistry([ credentialsId: "docker123", url: "" ]) {
+            docker.withRegistry( '', registryCredential ) {
                  dockerImage.push("${env.BUILD_NUMBER}")
                  dockerImage.push("latest")
             }
