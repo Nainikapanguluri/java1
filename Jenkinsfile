@@ -1,28 +1,28 @@
 pipeline {
     environment {
-registry = "nainikachowdary/java_app"
+registry = "nainikachowdary/java_app2"
 registryCredential = 'docker123'
 dockerImage = ''
 }
-    agent none
+    agent any
     stages {
         stage('Build') { 
-            agent any
+            
              steps {
                 sh 'mvn install'
             }
             }
        
        stage ('dockerization') {
-           agent any
+           
             steps{
               script {
-              dockerImage = docker.build("nainikachowdary/java_app")
+              dockerImage = docker.build(registry)
                 }
                  }
        }
        stage('Deploy Image') {
-           agent any
+           
           steps{
           script {
               
