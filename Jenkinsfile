@@ -39,7 +39,7 @@ dockerImage = ''
               
               steps{
                   script{
-                  sh 'docker run $registry:$BUILD_NUMBER'
+                  sh 'docker run $registry:latest'
                   }
               }
               }
