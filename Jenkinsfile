@@ -35,7 +35,7 @@ dockerImage = ''
                  }
                             }    
                 
-        stage('Run Image){
+        stage('Run Image'){
               
               steps{
                   script{
