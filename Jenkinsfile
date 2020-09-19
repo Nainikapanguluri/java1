@@ -27,8 +27,7 @@ dockerImage = ''
           steps{
           
               withDockerRegistry([ credentialsId: "docker123", url: "" ])
-             {  sh '''docker push brightbox/terraform:latest
-                 docker push brightbox/cli:latest'''
+             {  
               script {
                   dockerImage.push("${env.BUILD_NUMBER}")
                  dockerImage.push("latest")
