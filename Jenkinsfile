@@ -23,9 +23,7 @@ dockerImage = ''
                                  }
         
        stage('Push Image') {
-           agent {
-        label 'worker-linux'
-    }
+           
           steps{
           script {
               
@@ -38,7 +36,9 @@ dockerImage = ''
                             }    
                 
         stage('Run Image'){
-              
+              agent {
+        label 'worker-linux'
+    }
               steps{
                   script{
                   sh 'docker run -t -p 8081:8080 $registry:latest'
