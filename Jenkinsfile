@@ -23,7 +23,9 @@ dockerImage = ''
                                  }
         
        stage('Push Image') {
-           
+           agent {
+        label 'worker-linux'
+    }
           steps{
           script {
               
